@@ -1,0 +1,18 @@
+on: push
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: step one action
+              run: echo "Step one, Job 1"
+            - name: step two action
+              run: env | sort && echo "Hello from step two, Job 1"
+    job2:
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: step one action
+              run: echo "Step one, Job 2"
+            - name: step two action
+              run: "Get-ChildItem env: | Sort-Object -Property Name; echo 'Hello from step two, Job 2'"  
